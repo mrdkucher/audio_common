@@ -15,9 +15,15 @@ catkin_package()
 
 add_executable(audio_capture src/audio_capture.cpp)
 target_link_libraries(audio_capture ${catkin_LIBRARIES} ${GST1.0_LIBRARIES} ${Boost_LIBRARIES})
+add_executable(audiostamped_capture src/audiostamped_capture.cpp)
+target_link_libraries(audiostamped_capture ${catkin_LIBRARIES} ${GST1.0_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(audio_capture ${catkin_EXPORTED_TARGETS})
+add_dependencies(audiostamped_capture ${catkin_EXPORTED_TARGETS})
 
 install(TARGETS audio_capture
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+install(TARGETS audiostamped_capture
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch

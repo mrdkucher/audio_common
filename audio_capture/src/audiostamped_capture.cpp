@@ -206,6 +206,8 @@ namespace audio_transport
         gst_buffer_map(buffer, &map, GST_MAP_READ);
         msg.data.resize( map.size );
 
+        // regardless of the 'depth' requested, map's data size is alsways 960,
+        // there are 480 signed 16 bit integers per message
         memcpy( &msg.data[0], map.data, map.size );
 
         gst_buffer_unmap(buffer, &map);
